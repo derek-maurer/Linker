@@ -16,7 +16,7 @@ static BOOL validPath(char* path) {
 int main (int argc, char **argv)
 {
 
-    @autoreleasepool {
+    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
         
         BOOL validInput = NO;
         BOOL currentPath = YES;
@@ -85,7 +85,7 @@ int main (int argc, char **argv)
             [linker link];
         }
         
-    }
+    [pool release];
     return 0;
 }
 

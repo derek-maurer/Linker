@@ -18,6 +18,11 @@
     return self;
 }
 
+-(void)dealloc {
+    [path release];
+    [super dealloc];
+}
+
 -(void)link {
     
     if (!remove) {
@@ -51,7 +56,7 @@
         if ([self theosExists:path] && remove) 
             [[NSFileManager defaultManager] removeItemAtPath:theos error:nil];
         else if (!remove) {
-            [[NSFileManager defaultManager] linkItemAtPath:theosPath toPath:theos error:nil];
+            [[NSFileManager defaultManager] createSymbolicLinkAtPath:theos withDestinationPath:theosPath error:nil];
         }
         
         [self linkTheosForProjects:subprojects withPath:path];
@@ -62,7 +67,7 @@
         if ([self theosExists:path] && remove) 
             [[NSFileManager defaultManager] removeItemAtPath:theos error:nil];
         else if (!remove) {
-            [[NSFileManager defaultManager] linkItemAtPath:theosPath toPath:theos error:nil];
+            [[NSFileManager defaultManager] createSymbolicLinkAtPath:theos withDestinationPath:theosPath error:nil];
         }
     }
 }
@@ -82,7 +87,7 @@
         else {
             NSString *project = [NSString stringWithFormat:@"%@/%@",p,[projects objectAtIndex:i]];
             NSString *theos = [NSString stringWithFormat:@"%@/%@/theos",p,[projects objectAtIndex:i]];
-            [[NSFileManager defaultManager] linkItemAtPath:theosPath toPath:theos error:nil];
+            [[NSFileManager defaultManager] createSymbolicLinkAtPath:theos withDestinationPath:theosPath error:nil];
             NSArray *subprojects = [self subprojectsAtPath:project];
             if (subprojects) {
                 [self linkTheosForProjects:subprojects withPath:project];

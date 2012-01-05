@@ -1,0 +1,9 @@
+Package: com.homeschooldev.linker
+Name: Linker
+Depends: 
+Version: 0.0.1
+Architecture: iphoneos-arm
+Description: A command line utility to add/remove theos symbolic links in theos projects. Use Linker -h to learn how this program works.
+Maintainer: Home School Dev
+Author: Home School Dev
+Section: Development

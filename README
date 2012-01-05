@@ -1,1 +1,3 @@
 This is a command line utility designed to add/remove theos symbolic links from your theos projects. It will remove/add all sub-projects links too! :)
+
+You can use the makefile to build the binary for iOS devices.
